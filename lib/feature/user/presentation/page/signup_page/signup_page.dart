@@ -3,14 +3,14 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:todo_frontend/feature/user/service/user_route_service.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   final _usernameController = TextEditingController();
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'Login',
+                    'Signup',
                     style: TextStyle(fontSize: 22),
                   ),
                   const SizedBox(
@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                     keyboardType: TextInputType.emailAddress,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.minLength(3),
                     ]),
                   ),
                   const SizedBox(
@@ -68,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                     keyboardType: TextInputType.emailAddress,
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.minLength(6),
                     ]),
                   ),
                   const SizedBox(
@@ -77,8 +79,10 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
-                        onPressed: () => context.userRouteService.goToSignup(),
-                        child: const Text('Signup'),
+                        onPressed: () {
+                          context.userRouteService.goToLogin();
+                        },
+                        child: const Text('Login'),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -86,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
 
                           context.userRouteService.goToHome();
                         },
-                        child: const Text('Login'),
+                        child: const Text('Signup'),
                       ),
                     ],
                   ),
