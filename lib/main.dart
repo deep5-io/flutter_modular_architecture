@@ -1,23 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:todo_frontend/feat/startup/presentation/page/start_up_page/start_up_page.dart';
+import 'package:todo_frontend/app/app_di/app_di.dart';
+import 'package:todo_frontend/app/widget/app.dart';
+import 'package:todo_frontend/shared/model/app_config.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final appConfig = AppConfig.fromEnvironment();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Todo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const StartUpPage(),
-    );
-  }
+  await AppDI.inject(appConfig);
+
+  runApp(const App());
 }
