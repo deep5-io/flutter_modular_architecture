@@ -421,7 +421,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failed,
+    required TResult Function(Failure failure) failed,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -429,7 +429,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? failed,
+    TResult? Function(Failure failure)? failed,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -437,7 +437,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failed,
+    TResult Function(Failure failure)? failed,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -532,7 +532,7 @@ class _$AuthInitialImpl implements AuthInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failed,
+    required TResult Function(Failure failure) failed,
     required TResult Function() success,
   }) {
     return initial();
@@ -543,7 +543,7 @@ class _$AuthInitialImpl implements AuthInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? failed,
+    TResult? Function(Failure failure)? failed,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -554,7 +554,7 @@ class _$AuthInitialImpl implements AuthInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failed,
+    TResult Function(Failure failure)? failed,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -649,7 +649,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failed,
+    required TResult Function(Failure failure) failed,
     required TResult Function() success,
   }) {
     return loading();
@@ -660,7 +660,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? failed,
+    TResult? Function(Failure failure)? failed,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -671,7 +671,7 @@ class _$AuthLoadingImpl implements AuthLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failed,
+    TResult Function(Failure failure)? failed,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -728,6 +728,10 @@ abstract class _$$AuthFailedImplCopyWith<$Res> {
   factory _$$AuthFailedImplCopyWith(
           _$AuthFailedImpl value, $Res Function(_$AuthFailedImpl) then) =
       __$$AuthFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+
+  $FailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -740,36 +744,71 @@ class __$$AuthFailedImplCopyWithImpl<$Res>
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$AuthFailedImpl(
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get failure {
+    return $FailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$AuthFailedImpl implements AuthFailed {
-  const _$AuthFailedImpl();
+  const _$AuthFailedImpl({required this.failure});
+
+  @override
+  final Failure failure;
 
   @override
   String toString() {
-    return 'AuthState.failed()';
+    return 'AuthState.failed(failure: $failure)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthFailedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AuthFailedImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthFailedImplCopyWith<_$AuthFailedImpl> get copyWith =>
+      __$$AuthFailedImplCopyWithImpl<_$AuthFailedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failed,
+    required TResult Function(Failure failure) failed,
     required TResult Function() success,
   }) {
-    return failed();
+    return failed(failure);
   }
 
   @override
@@ -777,10 +816,10 @@ class _$AuthFailedImpl implements AuthFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? failed,
+    TResult? Function(Failure failure)? failed,
     TResult? Function()? success,
   }) {
-    return failed?.call();
+    return failed?.call(failure);
   }
 
   @override
@@ -788,12 +827,12 @@ class _$AuthFailedImpl implements AuthFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failed,
+    TResult Function(Failure failure)? failed,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed();
+      return failed(failure);
     }
     return orElse();
   }
@@ -837,7 +876,15 @@ class _$AuthFailedImpl implements AuthFailed {
 }
 
 abstract class AuthFailed implements AuthState {
-  const factory AuthFailed() = _$AuthFailedImpl;
+  const factory AuthFailed({required final Failure failure}) = _$AuthFailedImpl;
+
+  Failure get failure;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AuthFailedImplCopyWith<_$AuthFailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -883,7 +930,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() failed,
+    required TResult Function(Failure failure) failed,
     required TResult Function() success,
   }) {
     return success();
@@ -894,7 +941,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? failed,
+    TResult? Function(Failure failure)? failed,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -905,7 +952,7 @@ class _$AuthSuccessImpl implements AuthSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? failed,
+    TResult Function(Failure failure)? failed,
     TResult Function()? success,
     required TResult orElse(),
   }) {

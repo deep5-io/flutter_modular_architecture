@@ -22,7 +22,7 @@ extension ExceptionToFailureExtension on Object {
 extension DioExceptionErrorExtractionExtension on DioException {
   String get parseDioError {
     try {
-      return (response?.data as Map<String, dynamic>)['errors'] as String;
+      return (response!.data as Map<String, dynamic>)['error'] as String;
     } catch (_) {
       return '${response?.statusCode ?? 'Network'} Error';
     }

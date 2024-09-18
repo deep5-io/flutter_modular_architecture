@@ -13,15 +13,6 @@ class App extends StatelessWidget {
         child: MaterialApp.router(
           title: 'Todo',
           debugShowCheckedModeBanner: false,
-          // localizationsDelegates: const [
-          //   ...AppLocalizations.localizationsDelegates,
-          //   FormBuilderLocalizations.delegate,
-          // ],
-          // supportedLocales: AppLocalizations.supportedLocales,
-          // locale: locale,
-          // themeMode: themeMode,
-          // theme: AppTheme.theme,
-          // darkTheme: AppTheme.darkTheme,
           routerConfig: AppRouter.router,
         ),
       ),

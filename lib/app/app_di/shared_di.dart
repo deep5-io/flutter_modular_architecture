@@ -47,7 +47,7 @@ class SharedDI {
   static Future<void> _injectRepo(GetIt instance) async {
     instance.registerLazySingleton<IUserRepo>(
       () => UserRepo(
-        networkService: instance(),
+        userLocalStorage: instance(),
         log: instance(),
       ),
     );
