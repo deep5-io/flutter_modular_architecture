@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
 
                               return ListTile(
                                 onTap: () => context.homeRouteService
-                                    .showTodoDetailDialog(),
+                                    .showTodoDetailDialog(todo: todo),
                                 trailing: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [

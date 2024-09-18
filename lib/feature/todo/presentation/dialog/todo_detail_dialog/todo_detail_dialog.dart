@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:todo_frontend/shared/data/model/todo.dart';
 
 class TodoDetailDialog extends StatelessWidget {
-  const TodoDetailDialog({super.key});
+  const TodoDetailDialog({
+    required this.todo,
+    super.key,
+  });
+
+  final Todo todo;
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +32,15 @@ class TodoDetailDialog extends StatelessWidget {
           const SizedBox(height: 12),
           Expanded(
             child: ListView(
-              children: const [
+              children: [
                 Text(
-                  'The title',
-                  style: TextStyle(fontSize: 22),
+                  todo.title,
+                  style: const TextStyle(fontSize: 22),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Text(
-                  'The description : lorem ipsum dolor sit amet',
-                  style: TextStyle(fontSize: 16),
+                  todo.body,
+                  style: const TextStyle(fontSize: 16),
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:todo_frontend/app/app_dialog/todo_dialog.dart';
 import 'package:todo_frontend/app/app_router/todo_router.dart';
 import 'package:todo_frontend/app/app_router/user_router.dart';
 import 'package:todo_frontend/feature/home/service/home_route_service.dart';
+import 'package:todo_frontend/shared/data/model/todo.dart';
 import 'package:todo_frontend/shared/service/context_tracker.dart';
 
 class HomeRouteService extends IHomeRouteService {
@@ -22,7 +23,10 @@ class HomeRouteService extends IHomeRouteService {
   }
 
   @override
-  void showTodoDetailDialog({BuildContext? context}) {
-    TodoDialog.showTodoDetail(context: context ?? _contextTracker.context);
+  void showTodoDetailDialog({required Todo todo, BuildContext? context}) {
+    TodoDialog.showTodoDetail(
+      context: context ?? _contextTracker.context,
+      todo: todo,
+    );
   }
 }
