@@ -1,4 +1,6 @@
 import 'package:either_dart/either.dart';
+import 'package:todo_frontend/feature/todo/data/model/create_todo_param.dart';
+import 'package:todo_frontend/feature/todo/data/model/update_todo_param.dart';
 import 'package:todo_frontend/shared/data/model/todo.dart';
 import 'package:todo_frontend/shared/data/repo/todo_repo.dart';
 import 'package:todo_frontend/shared/error/exceptions.dart';
@@ -39,6 +41,39 @@ class TodoRepo extends ITodoRepo {
       return const Right(null);
     } catch (e) {
       _log.e('Failed to delete todo: $e');
+      return Left(e.toFailure);
+    }
+  }
+
+  Future<Either<Failure, void>> createTodo(
+    CreateTodoParam todo,
+  ) async {
+    try {
+      await _networkService.post(
+        path: 'posts',
+        body: todo.toJson(),
+      );
+
+      return const Right(null);
+    } catch (e) {
+      _log.e('Failed to create todo: $e');
+      return Left(e.toFailure);
+    }
+  }
+
+  Future<Either<Failure, void>> updateTodo(
+    UpdateTodoParam todo,
+  ) async {
+    try {
+      await _networkService.put(
+        path: 'posts/${todo.id}',
+        body: todo.toJson(),
+      );
+
+      return const Right(null);
+    } catch (e) {
+      _log.e('Failed to update todo: $e');
+
       return Left(e.toFailure);
     }
   }

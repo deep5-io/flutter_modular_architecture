@@ -62,10 +62,7 @@ class SharedDI {
         ),
       )
       ..registerLazySingleton<ITodoRepo>(
-        () => TodoRepo(
-          networkService: instance(),
-          log: instance(),
-        ),
+        () => instance<TodoRepo>(),
       );
   }
 

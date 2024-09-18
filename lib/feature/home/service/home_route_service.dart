@@ -10,6 +10,10 @@ extension IHomeRouteServiceExtension on BuildContext {
 abstract class IHomeRouteService {
   void goToLogin({BuildContext? context});
   void goAddNewTodo({BuildContext? context});
+  void goEditTodo({
+    required Todo todo,
+    BuildContext? context,
+  });
   void showTodoDetailDialog({
     required Todo todo,
     BuildContext? context,

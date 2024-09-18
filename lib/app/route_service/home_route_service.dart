@@ -29,4 +29,12 @@ class HomeRouteService extends IHomeRouteService {
       todo: todo,
     );
   }
+
+  @override
+  void goEditTodo({required Todo todo, BuildContext? context}) {
+    AddNewTodoPageRouter.go(
+      context ?? _contextTracker.context,
+      todo: todo,
+    );
+  }
 }

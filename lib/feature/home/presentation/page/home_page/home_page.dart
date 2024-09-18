@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     IconButton(
                                       onPressed: () => context.homeRouteService
-                                          .goAddNewTodo(),
+                                          .goEditTodo(todo: todo),
                                       icon: const Icon(
                                         Icons.edit,
                                       ),
