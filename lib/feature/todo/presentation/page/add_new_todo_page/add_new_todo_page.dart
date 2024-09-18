@@ -98,6 +98,7 @@ class _AddNewTodoPageState extends State<AddNewTodoPage> {
                         FormBuilderTextField(
                           controller: _descriptionController,
                           name: 'description',
+                          maxLines: 3,
                           decoration: const InputDecoration(
                             label: Text('Description ...'),
                             border: OutlineInputBorder(),

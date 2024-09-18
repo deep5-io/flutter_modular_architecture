@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:todo_frontend/feature/user/data/local_storage/user_local_storage.dart';
 import 'package:todo_frontend/feature/user/data/repo/auth_repo.dart';
+import 'package:todo_frontend/feature/user/data/repo/user_repo.dart';
+import 'package:todo_frontend/feature/user/presentation/bloc/app_user_bloc/app_user_bloc.dart';
 import 'package:todo_frontend/feature/user/presentation/bloc/auth/auth_bloc.dart';
 
 class UserDI {
@@ -11,19 +13,30 @@ class UserDI {
   }
 
   static Future<void> _injectBloc(GetIt instance) async {
-    instance.registerFactory<AuthBloc>(
-      () => AuthBloc(authRepo: instance()),
-    );
+    instance
+      ..registerFactory<AuthBloc>(
+        () => AuthBloc(authRepo: instance()),
+      )
+      ..registerFactory<AppUserBloc>(
+        () => AppUserBloc(userRepo: instance(), toastService: instance()),
+      );
   }
 
   static Future<void> _injectRepo(GetIt instance) async {
-    instance.registerLazySingleton<AuthRepo>(
-      () => AuthRepo(
-        // networkConnection: instance(),
-        userLocalStorage: instance(),
-        log: instance(),
-      ),
-    );
+    instance
+      ..registerLazySingleton<AuthRepo>(
+        () => AuthRepo(
+          // networkConnection: instance(),
+          userLocalStorage: instance(),
+          log: instance(),
+        ),
+      )
+      ..registerLazySingleton<UserRepo>(
+        () => UserRepo(
+          userLocalStorage: instance(),
+          log: instance(),
+        ),
+      );
   }
 
   static Future<void> _injectLocalStorage(GetIt instance) async {

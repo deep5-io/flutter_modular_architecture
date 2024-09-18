@@ -56,10 +56,7 @@ class SharedDI {
   static Future<void> _injectRepo(GetIt instance) async {
     instance
       ..registerLazySingleton<IUserRepo>(
-        () => UserRepo(
-          userLocalStorage: instance(),
-          log: instance(),
-        ),
+        () => instance<UserRepo>(),
       )
       ..registerLazySingleton<ITodoRepo>(
         () => instance<TodoRepo>(),
@@ -68,7 +65,7 @@ class SharedDI {
 
   static Future<void> _injectBloc(GetIt instance) async {
     instance.registerFactory<IAppUserBloc>(
-      () => AppUserBloc(userRepo: instance(), toastService: instance()),
+      () => instance<AppUserBloc>(),
     );
   }
 }
