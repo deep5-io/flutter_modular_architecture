@@ -5,7 +5,7 @@ import 'package:todo_frontend/feature/home/service/home_route_service.dart';
 import 'package:todo_frontend/feature/startup/service/startup_route_service.dart';
 import 'package:todo_frontend/feature/todo/service/todo_route_service.dart';
 import 'package:todo_frontend/feature/user/service/user_route_service.dart';
-import 'package:todo_frontend/shared/model/app_config.dart';
+import 'package:todo_frontend/shared/data/model/app_config.dart';
 
 class AppServiceWrapper extends StatelessWidget {
   const AppServiceWrapper({required this.child, super.key});
