@@ -19,8 +19,8 @@ class TodoRepo extends ITodoRepo {
   @override
   Future<Either<Failure, List<Todo>>> getTodos() async {
     try {
-      final result = (await _networkService.get(path: 'users/1/posts')).data
-          as List<dynamic>;
+      final result =
+          (await _networkService.get(path: 'posts')).data as List<dynamic>;
 
       return Right(
         result.map((e) => Todo.fromJson(e as Map<String, dynamic>)).toList(),
@@ -32,8 +32,14 @@ class TodoRepo extends ITodoRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteTodo({required Todo todo}) {
-    // TODO: implement deleteTodo
-    throw UnimplementedError();
+  Future<Either<Failure, void>> deleteTodo({required Todo todo}) async {
+    try {
+      await _networkService.delete(path: 'posts/${todo.id}');
+
+      return const Right(null);
+    } catch (e) {
+      _log.e('Failed to delete todo: $e');
+      return Left(e.toFailure);
+    }
   }
 }

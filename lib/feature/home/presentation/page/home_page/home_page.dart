@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_frontend/feature/home/presentation/bloc/home/home_bloc.dart';
 import 'package:todo_frontend/feature/home/service/home_route_service.dart';
+import 'package:todo_frontend/shared/data/model/todo.dart';
+import 'package:todo_frontend/shared/error/failures.dart';
 import 'package:todo_frontend/shared/presentation/bloc/app_user/app_user_bloc.dart';
+import 'package:todo_frontend/shared/presentation/widget/failure_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -57,32 +60,64 @@ class _HomePageState extends State<HomePage> {
                   height: 10,
                 ),
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: 20,
-                    itemBuilder: (context, index) => ListTile(
-                      onTap: () =>
-                          context.homeRouteService.showTodoDetailDialog(),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                  child: BlocBuilder<HomeBloc, HomeState>(
+                    builder: (context, state) => state.when(
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      loadFailed: (Failure failure) => FailureView(
+                        failure: failure,
+                        onRetryTap: () => context
+                            .read<HomeBloc>()
+                            .add(const HomeEvent.getTodo()),
+                      ),
+                      loaded: (List<Todo> todos, bool isLoading) => Stack(
                         children: [
-                          IconButton(
-                            onPressed: () =>
-                                context.homeRouteService.goAddNewTodo(),
-                            icon: const Icon(
-                              Icons.edit,
-                            ),
+                          ListView.builder(
+                            itemCount: todos.length,
+                            itemBuilder: (context, index) {
+                              final todo = todos[index];
+
+                              return ListTile(
+                                onTap: () => context.homeRouteService
+                                    .showTodoDetailDialog(),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => context.homeRouteService
+                                          .goAddNewTodo(),
+                                      icon: const Icon(
+                                        Icons.edit,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () => context
+                                          .read<HomeBloc>()
+                                          .add(
+                                            HomeEvent.deleteTodo(todo: todo),
+                                          ),
+                                      icon: const Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                title: Text(todo.title),
+                                subtitle: Text(todo.body),
+                              );
+                            },
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.delete,
-                              color: Colors.red,
+                          if (isLoading)
+                            ColoredBox(
+                              color: Colors.white.withOpacity(0.5),
+                              child: const Center(
+                                child: CircularProgressIndicator(),
+                              ),
                             ),
-                          ),
                         ],
                       ),
-                      title: Text('The Title : $index'),
-                      subtitle: Text('The description of $index'),
                     ),
                   ),
                 ),
