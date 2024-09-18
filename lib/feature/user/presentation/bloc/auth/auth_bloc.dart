@@ -23,7 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     final result = await _authRepo.login(
-      AuthParam(email: event.email, password: event.password),
+      AuthParam(username: event.username, password: event.password),
     );
 
     result.fold(
@@ -40,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(const AuthState.loading());
 
     final result = await _authRepo.signup(
-      AuthParam(email: event.email, password: event.password),
+      AuthParam(username: event.username, password: event.password),
     );
 
     result.fold(

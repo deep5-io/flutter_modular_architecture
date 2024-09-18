@@ -29,9 +29,9 @@ class AuthRepo {
 
       await Future<dynamic>.delayed(const Duration(seconds: 1));
 
-      const result = {
+      final result = {
         'id': 'GcieyJhb',
-        'username': 'username',
+        'username': param.username,
         'token': 'eyJhbGcieyJhbGcieyJhbGcieyJhbGcieyJhbGcieyJhbGci',
       };
 
@@ -56,9 +56,9 @@ class AuthRepo {
 
       await Future<dynamic>.delayed(const Duration(seconds: 1));
 
-      const result = {
+      final result = {
         'id': 'GcieyJhb',
-        'username': 'username',
+        'username': param.username,
         'token': 'eyJhbGcieyJhbGcieyJhbGcieyJhbGcieyJhbGcieyJhbGci',
       };
 

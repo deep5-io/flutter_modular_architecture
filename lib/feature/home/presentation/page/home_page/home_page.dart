@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_frontend/feature/home/service/home_route_service.dart';
+import 'package:todo_frontend/shared/presentation/bloc/app_user/app_user_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -23,9 +25,18 @@ class HomePage extends StatelessWidget {
                       onPressed: () => context.homeRouteService.goAddNewTodo(),
                       child: const Text('Add new'),
                     ),
-                    ElevatedButton(
-                      onPressed: () => context.homeRouteService.goToLogin(),
-                      child: const Text('Logout'),
+                    BlocListener<IAppUserBloc, AppUserState>(
+                      listener: (BuildContext context, AppUserState state) {
+                        if (state is AppUserLogout) {
+                          context.homeRouteService.goToLogin();
+                        }
+                      },
+                      child: ElevatedButton(
+                        onPressed: () => context
+                            .read<IAppUserBloc>()
+                            .add(const AppUserEvent.logout()),
+                        child: const Text('Logout'),
+                      ),
                     ),
                   ],
                 ),

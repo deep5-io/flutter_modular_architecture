@@ -6,6 +6,7 @@ import 'package:todo_frontend/feature/startup/service/startup_route_service.dart
 import 'package:todo_frontend/feature/todo/service/todo_route_service.dart';
 import 'package:todo_frontend/feature/user/service/user_route_service.dart';
 import 'package:todo_frontend/shared/data/model/app_config.dart';
+import 'package:todo_frontend/shared/service/toast_service.dart';
 
 class AppServiceWrapper extends StatelessWidget {
   const AppServiceWrapper({required this.child, super.key});
@@ -18,6 +19,9 @@ class AppServiceWrapper extends StatelessWidget {
       providers: [
         RepositoryProvider<AppConfig>(
           create: (context) => AppDI.instance<AppConfig>(),
+        ),
+        RepositoryProvider<ToastService>(
+          create: (context) => AppDI.instance<ToastService>(),
         ),
         RepositoryProvider<IStartupRouteService>(
           create: (context) => AppDI.instance<IStartupRouteService>(),

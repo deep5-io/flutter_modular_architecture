@@ -6,7 +6,7 @@ part 'auth_param.g.dart';
 @freezed
 class AuthParam with _$AuthParam {
   factory AuthParam({
-    required String email,
+    required String username,
     required String password,
   }) = _AuthParam;
 

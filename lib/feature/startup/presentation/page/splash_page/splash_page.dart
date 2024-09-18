@@ -7,7 +7,8 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future<void>.delayed(const Duration(seconds: 2)).then((_) {
-      context.startupRouteService.goToLogin();
+      // RouteGuard will redirect to login page if user is not authenticated
+      context.startupRouteService.goToHome();
     });
 
     return const Scaffold(

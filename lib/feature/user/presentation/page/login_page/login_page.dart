@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:todo_frontend/feature/user/presentation/bloc/auth/auth_bloc.dart';
+import 'package:todo_frontend/feature/user/presentation/widget/auth_form.dart';
 import 'package:todo_frontend/feature/user/service/user_route_service.dart';
+import 'package:todo_frontend/shared/error/failures.dart';
+import 'package:todo_frontend/shared/service/toast_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -43,52 +47,65 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 40,
                   ),
-                  FormBuilderTextField(
-                    controller: _usernameController,
-                    name: 'username',
-                    decoration: const InputDecoration(
-                      label: Text('Username ...'),
-                      border: OutlineInputBorder(),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(),
-                    ]),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  FormBuilderTextField(
-                    controller: _passwordController,
-                    name: 'password',
-                    decoration: const InputDecoration(
-                      label: Text('Password ...'),
-                      border: OutlineInputBorder(),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    validator: FormBuilderValidators.compose([
-                      FormBuilderValidators.required(),
-                    ]),
+                  AuthForm(
+                    usernameController: _usernameController,
+                    passwordController: _passwordController,
                   ),
                   const SizedBox(
                     height: 25,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () => context.userRouteService.goToSignup(),
-                        child: const Text('Signup'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (!_formKey.currentState!.validate()) return;
+                  BlocConsumer<AuthBloc, AuthState>(
+                    listener: (BuildContext context, AuthState state) {
+                      if (state is AuthSuccess) {
+                        context.toastService.showToast('Successfully login');
 
-                          context.userRouteService.goToHome();
-                        },
-                        child: const Text('Login'),
-                      ),
-                    ],
+                        context.userRouteService.goToHome();
+
+                        return;
+                      }
+
+                      if (state is AuthFailed) {
+                        context.toastService.showToast(state.failure.errorMsg);
+                      }
+                    },
+                    builder: (BuildContext context, AuthState state) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                            onPressed: state is AuthLoading
+                                ? null
+                                : () {
+                                    context.userRouteService.goToSignup();
+                                  },
+                            child: const Text('Signup'),
+                          ),
+                          ElevatedButton(
+                            onPressed: state is AuthLoading
+                                ? null
+                                : () {
+                                    if (!_formKey.currentState!.validate()) {
+                                      return;
+                                    }
+
+                                    context.read<AuthBloc>().add(
+                                          AuthEvent.login(
+                                            username:
+                                                _usernameController.text.trim(),
+                                            password:
+                                                _passwordController.text.trim(),
+                                          ),
+                                        );
+                                  },
+                            child: state is AuthLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : const Text('Login'),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),

@@ -20,7 +20,7 @@ AuthParam _$AuthParamFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthParam {
-  String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   /// Serializes this AuthParam to a JSON map.
@@ -38,7 +38,7 @@ abstract class $AuthParamCopyWith<$Res> {
   factory $AuthParamCopyWith(AuthParam value, $Res Function(AuthParam) then) =
       _$AuthParamCopyWithImpl<$Res, AuthParam>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String username, String password});
 }
 
 /// @nodoc
@@ -56,13 +56,13 @@ class _$AuthParamCopyWithImpl<$Res, $Val extends AuthParam>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -80,7 +80,7 @@ abstract class _$$AuthParamImplCopyWith<$Res>
       __$$AuthParamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password});
+  $Res call({String username, String password});
 }
 
 /// @nodoc
@@ -96,13 +96,13 @@ class __$$AuthParamImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
   }) {
     return _then(_$AuthParamImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -115,19 +115,19 @@ class __$$AuthParamImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AuthParamImpl implements _AuthParam {
-  _$AuthParamImpl({required this.email, required this.password});
+  _$AuthParamImpl({required this.username, required this.password});
 
   factory _$AuthParamImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthParamImplFromJson(json);
 
   @override
-  final String email;
+  final String username;
   @override
   final String password;
 
   @override
   String toString() {
-    return 'AuthParam(email: $email, password: $password)';
+    return 'AuthParam(username: $username, password: $password)';
   }
 
   @override
@@ -135,14 +135,15 @@ class _$AuthParamImpl implements _AuthParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthParamImpl &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, username, password);
 
   /// Create a copy of AuthParam
   /// with the given fields replaced by the non-null parameter values.
@@ -162,14 +163,14 @@ class _$AuthParamImpl implements _AuthParam {
 
 abstract class _AuthParam implements AuthParam {
   factory _AuthParam(
-      {required final String email,
+      {required final String username,
       required final String password}) = _$AuthParamImpl;
 
   factory _AuthParam.fromJson(Map<String, dynamic> json) =
       _$AuthParamImpl.fromJson;
 
   @override
-  String get email;
+  String get username;
   @override
   String get password;
 
