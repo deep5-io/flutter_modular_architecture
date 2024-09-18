@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo_frontend/feature/todo/data/repo/todo_repo.dart';
 import 'package:todo_frontend/feature/user/data/repo/user_repo.dart';
 import 'package:todo_frontend/feature/user/presentation/bloc/app_user_bloc/app_user_bloc.dart';
+import 'package:todo_frontend/shared/data/repo/todo_repo.dart';
 import 'package:todo_frontend/shared/data/repo/user_repo.dart';
 import 'package:todo_frontend/shared/presentation/bloc/app_user/app_user_bloc.dart';
 import 'package:todo_frontend/shared/service/app_logger.dart';
@@ -52,12 +54,19 @@ class SharedDI {
   }
 
   static Future<void> _injectRepo(GetIt instance) async {
-    instance.registerLazySingleton<IUserRepo>(
-      () => UserRepo(
-        userLocalStorage: instance(),
-        log: instance(),
-      ),
-    );
+    instance
+      ..registerLazySingleton<IUserRepo>(
+        () => UserRepo(
+          userLocalStorage: instance(),
+          log: instance(),
+        ),
+      )
+      ..registerLazySingleton<ITodoRepo>(
+        () => TodoRepo(
+          networkService: instance(),
+          log: instance(),
+        ),
+      );
   }
 
   static Future<void> _injectBloc(GetIt instance) async {

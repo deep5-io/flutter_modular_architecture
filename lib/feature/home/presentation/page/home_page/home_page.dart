@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_frontend/feature/home/presentation/bloc/home/home_bloc.dart';
 import 'package:todo_frontend/feature/home/service/home_route_service.dart';
 import 'package:todo_frontend/shared/presentation/bloc/app_user/app_user_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<HomeBloc>().add(const HomeEvent.getTodo());
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
