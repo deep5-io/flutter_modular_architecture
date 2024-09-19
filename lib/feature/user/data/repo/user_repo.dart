@@ -27,7 +27,7 @@ class UserRepo extends IUserRepo {
   }
 
   @override
-  Future<bool> get isUserLogin async {
+  Future<bool> get isUserLoggedIn async {
     try {
       await _userLocalStorage.getToken();
 

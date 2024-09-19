@@ -33,10 +33,10 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: SizedBox(
-            width: 500,
-            child: FormBuilder(
-              key: _formKey,
+          child: FormBuilder(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -57,7 +57,8 @@ class _LoginPageState extends State<LoginPage> {
                   BlocConsumer<AuthBloc, AuthState>(
                     listener: (BuildContext context, AuthState state) {
                       if (state is AuthSuccess) {
-                        context.toastService.showToast('Successfully login');
+                        context.toastService
+                            .showToast('Logged in successfully!');
 
                         context.userRouteService.goToHome();
 

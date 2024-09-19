@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     BlocListener<IAppUserBloc, AppUserState>(
                       listener: (BuildContext context, AppUserState state) {
-                        if (state is AppUserLogout) {
+                        if (state is AppUserLoggedOut) {
                           context.homeRouteService.goToLogin();
                         }
                       },

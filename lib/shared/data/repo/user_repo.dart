@@ -3,6 +3,6 @@ import 'package:todo_frontend/shared/error/failures.dart';
 
 abstract class IUserRepo {
   Future<Either<Failure, String>> get token;
-  Future<bool> get isUserLogin;
+  Future<bool> get isUserLoggedIn;
   Future<Either<Failure, void>> logout();
 }

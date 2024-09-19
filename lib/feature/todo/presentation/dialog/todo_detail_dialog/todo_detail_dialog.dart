@@ -12,8 +12,7 @@ class TodoDetailDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 780,
-      height: 400,
+      width: MediaQuery.sizeOf(context).width * 0.9,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -21,6 +20,7 @@ class TodoDetailDialog extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Align(
             alignment: Alignment.centerRight,
@@ -30,20 +30,14 @@ class TodoDetailDialog extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Expanded(
-            child: ListView(
-              children: [
-                Text(
-                  todo.title,
-                  style: const TextStyle(fontSize: 22),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  todo.body,
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
+          Text(
+            todo.title,
+            style: const TextStyle(fontSize: 22),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            todo.body + todo.body,
+            style: const TextStyle(fontSize: 16),
           ),
         ],
       ),

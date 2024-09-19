@@ -20,7 +20,7 @@ class AppUserBloc extends IAppUserBloc {
   final ToastService _toastService;
 
   Future<void> _onLogout(LogoutEvent event, Emitter<AppUserState> emit) async {
-    emit(const AppUserState.logout());
+    emit(const AppUserState.loggedOut());
 
     final result = await _userRepo.logout();
 
@@ -36,9 +36,9 @@ class AppUserBloc extends IAppUserBloc {
     emit(const AppUserState.loading());
 
     emit(
-      (await _userRepo.isUserLogin)
-          ? const AppUserState.login()
-          : const AppUserState.logout(),
+      (await _userRepo.isUserLoggedIn)
+          ? const AppUserState.loggedIn()
+          : const AppUserState.loggedOut(),
     );
   }
 }

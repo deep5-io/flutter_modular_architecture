@@ -45,110 +45,108 @@ class _AddNewTodoPageState extends State<AddNewTodoPage> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: SizedBox(
-            width: 500,
-            child: BlocConsumer<EditTodoBloc, EditTodoState>(
-              listener: (BuildContext context, EditTodoState state) {
-                if (state is EditTodoSuccess) {
-                  context.todoRouteService.goToHome();
-                }
-              },
-              builder: (BuildContext context, EditTodoState state) {
-                return FormBuilder(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: IconButton(
-                                onPressed: () =>
-                                    context.todoRouteService.goToHome(),
-                                icon: const Icon(Icons.arrow_back),
-                              ),
+          child: BlocConsumer<EditTodoBloc, EditTodoState>(
+            listener: (BuildContext context, EditTodoState state) {
+              if (state is EditTodoSuccess) {
+                context.todoRouteService.goToHome();
+              }
+            },
+            builder: (BuildContext context, EditTodoState state) {
+              return FormBuilder(
+                key: _formKey,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: IconButton(
+                              onPressed: () =>
+                                  context.todoRouteService.goToHome(),
+                              icon: const Icon(Icons.arrow_back),
                             ),
-                            Center(
-                              child: Text(
-                                '${widget.todo == null ? 'Add New' : 'Edit'} Todo',
-                                style: const TextStyle(fontSize: 22),
-                              ),
+                          ),
+                          Center(
+                            child: Text(
+                              '${widget.todo == null ? 'Add New' : 'Edit'} Todo',
+                              style: const TextStyle(fontSize: 22),
                             ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        FormBuilderTextField(
-                          controller: _titleController,
-                          name: 'title',
-                          decoration: const InputDecoration(
-                            label: Text('Title ...'),
-                            border: OutlineInputBorder(),
                           ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(),
-                          ]),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      FormBuilderTextField(
+                        controller: _titleController,
+                        name: 'title',
+                        decoration: const InputDecoration(
+                          label: Text('Title ...'),
+                          border: OutlineInputBorder(),
                         ),
-                        const SizedBox(
-                          height: 15,
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                        ]),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      FormBuilderTextField(
+                        controller: _descriptionController,
+                        name: 'description',
+                        maxLines: 3,
+                        decoration: const InputDecoration(
+                          label: Text('Description ...'),
+                          border: OutlineInputBorder(),
                         ),
-                        FormBuilderTextField(
-                          controller: _descriptionController,
-                          name: 'description',
-                          maxLines: 3,
-                          decoration: const InputDecoration(
-                            label: Text('Description ...'),
-                            border: OutlineInputBorder(),
-                          ),
-                          validator: FormBuilderValidators.compose([
-                            FormBuilderValidators.required(),
-                          ]),
-                        ),
-                        const SizedBox(
-                          height: 35,
-                        ),
-                        ElevatedButton(
-                          onPressed: state is EditTodoLoading
-                              ? null
-                              : () {
-                                  if (!_formKey.currentState!.validate()) {
-                                    return;
-                                  }
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                        ]),
+                      ),
+                      const SizedBox(
+                        height: 35,
+                      ),
+                      ElevatedButton(
+                        onPressed: state is EditTodoLoading
+                            ? null
+                            : () {
+                                if (!_formKey.currentState!.validate()) {
+                                  return;
+                                }
 
-                                  if (widget.todo == null) {
-                                    context.read<EditTodoBloc>().add(
-                                          EditTodoEvent.createTodo(
-                                            title: _titleController.text,
-                                            description:
-                                                _descriptionController.text,
-                                          ),
-                                        );
-                                  } else {
-                                    context.read<EditTodoBloc>().add(
-                                          EditTodoEvent.updateTodo(
-                                            id: widget.todo!.id,
-                                            title: _titleController.text,
-                                            description:
-                                                _descriptionController.text,
-                                          ),
-                                        );
-                                  }
-                                },
-                          child: state is EditTodoLoading
-                              ? const Center(
-                                  child: CircularProgressIndicator(),
-                                )
-                              : Text(widget.todo == null ? 'Create' : 'Save'),
-                        ),
-                      ],
-                    ),
+                                if (widget.todo == null) {
+                                  context.read<EditTodoBloc>().add(
+                                        EditTodoEvent.createTodo(
+                                          title: _titleController.text,
+                                          description:
+                                              _descriptionController.text,
+                                        ),
+                                      );
+                                } else {
+                                  context.read<EditTodoBloc>().add(
+                                        EditTodoEvent.updateTodo(
+                                          id: widget.todo!.id,
+                                          title: _titleController.text,
+                                          description:
+                                              _descriptionController.text,
+                                        ),
+                                      );
+                                }
+                              },
+                        child: state is EditTodoLoading
+                            ? const Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : Text(widget.todo == null ? 'Create' : 'Save'),
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

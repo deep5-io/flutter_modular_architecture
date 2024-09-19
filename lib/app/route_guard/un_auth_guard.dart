@@ -19,7 +19,7 @@ class UnAuthRoute extends GoRoute {
             BuildContext context,
             GoRouterState state,
           ) async {
-            if (await AppDI.instance<IUserRepo>().isUserLogin) {
+            if (await AppDI.instance<IUserRepo>().isUserLoggedIn) {
               return HomePageRouter.path;
             }
 

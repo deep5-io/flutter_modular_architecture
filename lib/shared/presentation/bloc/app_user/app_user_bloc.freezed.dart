@@ -302,44 +302,44 @@ mixin _$AppUserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() logout,
-    required TResult Function() login,
+    required TResult Function() loggedOut,
+    required TResult Function() loggedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? logout,
-    TResult? Function()? login,
+    TResult? Function()? loggedOut,
+    TResult? Function()? loggedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? logout,
-    TResult Function()? login,
+    TResult Function()? loggedOut,
+    TResult Function()? loggedIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppUserLoading value) loading,
-    required TResult Function(AppUserLogout value) logout,
-    required TResult Function(AppUserLogin value) login,
+    required TResult Function(AppUserLoggedOut value) loggedOut,
+    required TResult Function(AppUserLoggedIn value) loggedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppUserLoading value)? loading,
-    TResult? Function(AppUserLogout value)? logout,
-    TResult? Function(AppUserLogin value)? login,
+    TResult? Function(AppUserLoggedOut value)? loggedOut,
+    TResult? Function(AppUserLoggedIn value)? loggedIn,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppUserLoading value)? loading,
-    TResult Function(AppUserLogout value)? logout,
-    TResult Function(AppUserLogin value)? login,
+    TResult Function(AppUserLoggedOut value)? loggedOut,
+    TResult Function(AppUserLoggedIn value)? loggedIn,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -408,8 +408,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() logout,
-    required TResult Function() login,
+    required TResult Function() loggedOut,
+    required TResult Function() loggedIn,
   }) {
     return loading();
   }
@@ -418,8 +418,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? logout,
-    TResult? Function()? login,
+    TResult? Function()? loggedOut,
+    TResult? Function()? loggedIn,
   }) {
     return loading?.call();
   }
@@ -428,8 +428,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? logout,
-    TResult Function()? login,
+    TResult Function()? loggedOut,
+    TResult Function()? loggedIn,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -442,8 +442,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppUserLoading value) loading,
-    required TResult Function(AppUserLogout value) logout,
-    required TResult Function(AppUserLogin value) login,
+    required TResult Function(AppUserLoggedOut value) loggedOut,
+    required TResult Function(AppUserLoggedIn value) loggedIn,
   }) {
     return loading(this);
   }
@@ -452,8 +452,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppUserLoading value)? loading,
-    TResult? Function(AppUserLogout value)? logout,
-    TResult? Function(AppUserLogin value)? login,
+    TResult? Function(AppUserLoggedOut value)? loggedOut,
+    TResult? Function(AppUserLoggedIn value)? loggedIn,
   }) {
     return loading?.call(this);
   }
@@ -462,8 +462,8 @@ class _$AppUserLoadingImpl implements AppUserLoading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppUserLoading value)? loading,
-    TResult Function(AppUserLogout value)? logout,
-    TResult Function(AppUserLogin value)? login,
+    TResult Function(AppUserLoggedOut value)? loggedOut,
+    TResult Function(AppUserLoggedIn value)? loggedIn,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -478,18 +478,18 @@ abstract class AppUserLoading implements AppUserState {
 }
 
 /// @nodoc
-abstract class _$$AppUserLogoutImplCopyWith<$Res> {
-  factory _$$AppUserLogoutImplCopyWith(
-          _$AppUserLogoutImpl value, $Res Function(_$AppUserLogoutImpl) then) =
-      __$$AppUserLogoutImplCopyWithImpl<$Res>;
+abstract class _$$AppUserLoggedOutImplCopyWith<$Res> {
+  factory _$$AppUserLoggedOutImplCopyWith(_$AppUserLoggedOutImpl value,
+          $Res Function(_$AppUserLoggedOutImpl) then) =
+      __$$AppUserLoggedOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AppUserLogoutImplCopyWithImpl<$Res>
-    extends _$AppUserStateCopyWithImpl<$Res, _$AppUserLogoutImpl>
-    implements _$$AppUserLogoutImplCopyWith<$Res> {
-  __$$AppUserLogoutImplCopyWithImpl(
-      _$AppUserLogoutImpl _value, $Res Function(_$AppUserLogoutImpl) _then)
+class __$$AppUserLoggedOutImplCopyWithImpl<$Res>
+    extends _$AppUserStateCopyWithImpl<$Res, _$AppUserLoggedOutImpl>
+    implements _$$AppUserLoggedOutImplCopyWith<$Res> {
+  __$$AppUserLoggedOutImplCopyWithImpl(_$AppUserLoggedOutImpl _value,
+      $Res Function(_$AppUserLoggedOutImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AppUserState
@@ -498,18 +498,18 @@ class __$$AppUserLogoutImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppUserLogoutImpl implements AppUserLogout {
-  const _$AppUserLogoutImpl();
+class _$AppUserLoggedOutImpl implements AppUserLoggedOut {
+  const _$AppUserLoggedOutImpl();
 
   @override
   String toString() {
-    return 'AppUserState.logout()';
+    return 'AppUserState.loggedOut()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AppUserLogoutImpl);
+        (other.runtimeType == runtimeType && other is _$AppUserLoggedOutImpl);
   }
 
   @override
@@ -519,32 +519,32 @@ class _$AppUserLogoutImpl implements AppUserLogout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() logout,
-    required TResult Function() login,
+    required TResult Function() loggedOut,
+    required TResult Function() loggedIn,
   }) {
-    return logout();
+    return loggedOut();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? logout,
-    TResult? Function()? login,
+    TResult? Function()? loggedOut,
+    TResult? Function()? loggedIn,
   }) {
-    return logout?.call();
+    return loggedOut?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? logout,
-    TResult Function()? login,
+    TResult Function()? loggedOut,
+    TResult Function()? loggedIn,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout();
+    if (loggedOut != null) {
+      return loggedOut();
     }
     return orElse();
   }
@@ -553,54 +553,54 @@ class _$AppUserLogoutImpl implements AppUserLogout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppUserLoading value) loading,
-    required TResult Function(AppUserLogout value) logout,
-    required TResult Function(AppUserLogin value) login,
+    required TResult Function(AppUserLoggedOut value) loggedOut,
+    required TResult Function(AppUserLoggedIn value) loggedIn,
   }) {
-    return logout(this);
+    return loggedOut(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppUserLoading value)? loading,
-    TResult? Function(AppUserLogout value)? logout,
-    TResult? Function(AppUserLogin value)? login,
+    TResult? Function(AppUserLoggedOut value)? loggedOut,
+    TResult? Function(AppUserLoggedIn value)? loggedIn,
   }) {
-    return logout?.call(this);
+    return loggedOut?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppUserLoading value)? loading,
-    TResult Function(AppUserLogout value)? logout,
-    TResult Function(AppUserLogin value)? login,
+    TResult Function(AppUserLoggedOut value)? loggedOut,
+    TResult Function(AppUserLoggedIn value)? loggedIn,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout(this);
+    if (loggedOut != null) {
+      return loggedOut(this);
     }
     return orElse();
   }
 }
 
-abstract class AppUserLogout implements AppUserState {
-  const factory AppUserLogout() = _$AppUserLogoutImpl;
+abstract class AppUserLoggedOut implements AppUserState {
+  const factory AppUserLoggedOut() = _$AppUserLoggedOutImpl;
 }
 
 /// @nodoc
-abstract class _$$AppUserLoginImplCopyWith<$Res> {
-  factory _$$AppUserLoginImplCopyWith(
-          _$AppUserLoginImpl value, $Res Function(_$AppUserLoginImpl) then) =
-      __$$AppUserLoginImplCopyWithImpl<$Res>;
+abstract class _$$AppUserLoggedInImplCopyWith<$Res> {
+  factory _$$AppUserLoggedInImplCopyWith(_$AppUserLoggedInImpl value,
+          $Res Function(_$AppUserLoggedInImpl) then) =
+      __$$AppUserLoggedInImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AppUserLoginImplCopyWithImpl<$Res>
-    extends _$AppUserStateCopyWithImpl<$Res, _$AppUserLoginImpl>
-    implements _$$AppUserLoginImplCopyWith<$Res> {
-  __$$AppUserLoginImplCopyWithImpl(
-      _$AppUserLoginImpl _value, $Res Function(_$AppUserLoginImpl) _then)
+class __$$AppUserLoggedInImplCopyWithImpl<$Res>
+    extends _$AppUserStateCopyWithImpl<$Res, _$AppUserLoggedInImpl>
+    implements _$$AppUserLoggedInImplCopyWith<$Res> {
+  __$$AppUserLoggedInImplCopyWithImpl(
+      _$AppUserLoggedInImpl _value, $Res Function(_$AppUserLoggedInImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of AppUserState
@@ -609,18 +609,18 @@ class __$$AppUserLoginImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppUserLoginImpl implements AppUserLogin {
-  const _$AppUserLoginImpl();
+class _$AppUserLoggedInImpl implements AppUserLoggedIn {
+  const _$AppUserLoggedInImpl();
 
   @override
   String toString() {
-    return 'AppUserState.login()';
+    return 'AppUserState.loggedIn()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AppUserLoginImpl);
+        (other.runtimeType == runtimeType && other is _$AppUserLoggedInImpl);
   }
 
   @override
@@ -630,32 +630,32 @@ class _$AppUserLoginImpl implements AppUserLogin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function() logout,
-    required TResult Function() login,
+    required TResult Function() loggedOut,
+    required TResult Function() loggedIn,
   }) {
-    return login();
+    return loggedIn();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function()? logout,
-    TResult? Function()? login,
+    TResult? Function()? loggedOut,
+    TResult? Function()? loggedIn,
   }) {
-    return login?.call();
+    return loggedIn?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function()? logout,
-    TResult Function()? login,
+    TResult Function()? loggedOut,
+    TResult Function()? loggedIn,
     required TResult orElse(),
   }) {
-    if (login != null) {
-      return login();
+    if (loggedIn != null) {
+      return loggedIn();
     }
     return orElse();
   }
@@ -664,37 +664,37 @@ class _$AppUserLoginImpl implements AppUserLogin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppUserLoading value) loading,
-    required TResult Function(AppUserLogout value) logout,
-    required TResult Function(AppUserLogin value) login,
+    required TResult Function(AppUserLoggedOut value) loggedOut,
+    required TResult Function(AppUserLoggedIn value) loggedIn,
   }) {
-    return login(this);
+    return loggedIn(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AppUserLoading value)? loading,
-    TResult? Function(AppUserLogout value)? logout,
-    TResult? Function(AppUserLogin value)? login,
+    TResult? Function(AppUserLoggedOut value)? loggedOut,
+    TResult? Function(AppUserLoggedIn value)? loggedIn,
   }) {
-    return login?.call(this);
+    return loggedIn?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppUserLoading value)? loading,
-    TResult Function(AppUserLogout value)? logout,
-    TResult Function(AppUserLogin value)? login,
+    TResult Function(AppUserLoggedOut value)? loggedOut,
+    TResult Function(AppUserLoggedIn value)? loggedIn,
     required TResult orElse(),
   }) {
-    if (login != null) {
-      return login(this);
+    if (loggedIn != null) {
+      return loggedIn(this);
     }
     return orElse();
   }
 }
 
-abstract class AppUserLogin implements AppUserState {
-  const factory AppUserLogin() = _$AppUserLoginImpl;
+abstract class AppUserLoggedIn implements AppUserState {
+  const factory AppUserLoggedIn() = _$AppUserLoggedInImpl;
 }
