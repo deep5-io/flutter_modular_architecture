@@ -8,7 +8,7 @@ import 'package:todo_frontend/shared/data/model/todo.dart';
 
 class AddNewTodoPage extends StatefulWidget {
   const AddNewTodoPage({
-    required this.todo,
+    this.todo,
     super.key,
   });
 
