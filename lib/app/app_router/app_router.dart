@@ -12,11 +12,11 @@ class AppRouter {
     navigatorKey: AppDI.instance<ContextTracker>().rootKey,
     initialLocation: SplashPageRouter.path,
     routes: [
-      SplashPageRouter.route,
-      LoginPageRouter.route,
-      HomePageRouter.route,
-      SignupPageRouter.route,
-      AddNewTodoPageRouter.route,
+      $splashPageRouter,
+      $loginPageRouter,
+      $homePageRouter,
+      $signupPageRouter,
+      $addNewTodoPageRouter,
     ],
   );
 

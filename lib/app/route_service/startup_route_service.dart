@@ -12,11 +12,11 @@ class StartupRouteService extends IStartupRouteService {
 
   @override
   void goToHome({BuildContext? context}) {
-    HomePageRouter.go(context ?? _contextTracker.context);
+    HomePageRouter().go(context ?? _contextTracker.context);
   }
 
   @override
   void goToLogin({BuildContext? context}) {
-    LoginPageRouter.go(context ?? _contextTracker.context);
+    LoginPageRouter().go(context ?? _contextTracker.context);
   }
 }
