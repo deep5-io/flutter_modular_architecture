@@ -8,11 +8,11 @@ import 'package:todo_frontend/feature/home/presentation/page/home_page/home_page
 
 part 'home_router.g.dart';
 
-@TypedGoRoute<HomePageRouter>(
-  path: HomePageRouter.path,
+@TypedGoRoute<HomePageRoute>(
+  path: HomePageRoute.path,
 )
 @immutable
-class HomePageRouter extends AuthRoute {
+class HomePageRoute extends AuthRoute {
   static const String path = '/home';
 
   @override

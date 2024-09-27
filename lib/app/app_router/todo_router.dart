@@ -9,12 +9,12 @@ import 'package:todo_frontend/shared/data/model/todo.dart';
 
 part 'todo_router.g.dart';
 
-@TypedGoRoute<AddNewTodoPageRouter>(
-  path: AddNewTodoPageRouter.path,
+@TypedGoRoute<AddNewTodoPageRoute>(
+  path: AddNewTodoPageRoute.path,
 )
 @immutable
-class AddNewTodoPageRouter extends AuthRoute {
-  const AddNewTodoPageRouter({this.$extra});
+class AddNewTodoPageRoute extends AuthRoute {
+  const AddNewTodoPageRoute({this.$extra});
 
   static const String path = '/add-new-todo';
 

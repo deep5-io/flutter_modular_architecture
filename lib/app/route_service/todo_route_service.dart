@@ -11,6 +11,6 @@ class TodoRouteService extends ITodoRouteService {
 
   @override
   void goToHome({BuildContext? context}) {
-    HomePageRouter().go(context ?? _contextTracker.context);
+    HomePageRoute().go(context ?? _contextTracker.context);
   }
 }

@@ -7,16 +7,16 @@ part of 'startup_router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $splashPageRouter,
+      $splashPageRoute,
     ];
 
-RouteBase get $splashPageRouter => GoRouteData.$route(
+RouteBase get $splashPageRoute => GoRouteData.$route(
       path: '/',
-      factory: $SplashPageRouterExtension._fromState,
+      factory: $SplashPageRouteExtension._fromState,
     );
 
-extension $SplashPageRouterExtension on SplashPageRouter {
-  static SplashPageRouter _fromState(GoRouterState state) => SplashPageRouter();
+extension $SplashPageRouteExtension on SplashPageRoute {
+  static SplashPageRoute _fromState(GoRouterState state) => SplashPageRoute();
 
   String get location => GoRouteData.$location(
         '/',

@@ -7,17 +7,17 @@ part of 'todo_router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $addNewTodoPageRouter,
+      $addNewTodoPageRoute,
     ];
 
-RouteBase get $addNewTodoPageRouter => GoRouteData.$route(
+RouteBase get $addNewTodoPageRoute => GoRouteData.$route(
       path: '/add-new-todo',
-      factory: $AddNewTodoPageRouterExtension._fromState,
+      factory: $AddNewTodoPageRouteExtension._fromState,
     );
 
-extension $AddNewTodoPageRouterExtension on AddNewTodoPageRouter {
-  static AddNewTodoPageRouter _fromState(GoRouterState state) =>
-      AddNewTodoPageRouter(
+extension $AddNewTodoPageRouteExtension on AddNewTodoPageRoute {
+  static AddNewTodoPageRoute _fromState(GoRouterState state) =>
+      AddNewTodoPageRoute(
         $extra: state.extra as Todo?,
       );
 

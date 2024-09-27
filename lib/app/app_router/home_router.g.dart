@@ -7,16 +7,16 @@ part of 'home_router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $homePageRouter,
+      $homePageRoute,
     ];
 
-RouteBase get $homePageRouter => GoRouteData.$route(
+RouteBase get $homePageRoute => GoRouteData.$route(
       path: '/home',
-      factory: $HomePageRouterExtension._fromState,
+      factory: $HomePageRouteExtension._fromState,
     );
 
-extension $HomePageRouterExtension on HomePageRouter {
-  static HomePageRouter _fromState(GoRouterState state) => HomePageRouter();
+extension $HomePageRouteExtension on HomePageRoute {
+  static HomePageRoute _fromState(GoRouterState state) => HomePageRoute();
 
   String get location => GoRouteData.$location(
         '/home',

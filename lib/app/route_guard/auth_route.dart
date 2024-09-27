@@ -12,7 +12,7 @@ abstract class AuthRoute extends GoRouteData {
   @override
   FutureOr<String?> redirect(BuildContext context, GoRouterState state) async {
     if (!(await AppDI.instance<IUserRepo>().isUserLoggedIn)) {
-      return LoginPageRouter.path;
+      return LoginPageRoute.path;
     }
 
     return super.redirect(context, state);

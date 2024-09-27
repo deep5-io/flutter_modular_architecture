@@ -4,11 +4,11 @@ import 'package:todo_frontend/feature/startup/presentation/page/splash_page/spla
 
 part 'startup_router.g.dart';
 
-@TypedGoRoute<SplashPageRouter>(
-  path: SplashPageRouter.path,
+@TypedGoRoute<SplashPageRoute>(
+  path: SplashPageRoute.path,
 )
 @immutable
-class SplashPageRouter extends GoRouteData {
+class SplashPageRoute extends GoRouteData {
   static const String path = '/';
 
   @override

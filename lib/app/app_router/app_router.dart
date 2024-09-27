@@ -10,13 +10,13 @@ class AppRouter {
   static final GoRouter _router = GoRouter(
     debugLogDiagnostics: true,
     navigatorKey: AppDI.instance<ContextTracker>().rootKey,
-    initialLocation: SplashPageRouter.path,
+    initialLocation: SplashPageRoute.path,
     routes: [
-      $splashPageRouter,
-      $loginPageRouter,
-      $homePageRouter,
-      $signupPageRouter,
-      $addNewTodoPageRouter,
+      $splashPageRoute,
+      $loginPageRoute,
+      $homePageRoute,
+      $signupPageRoute,
+      $addNewTodoPageRoute,
     ],
   );
 

@@ -7,17 +7,17 @@ part of 'user_router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $loginPageRouter,
-      $signupPageRouter,
+      $loginPageRoute,
+      $signupPageRoute,
     ];
 
-RouteBase get $loginPageRouter => GoRouteData.$route(
+RouteBase get $loginPageRoute => GoRouteData.$route(
       path: '/login',
-      factory: $LoginPageRouterExtension._fromState,
+      factory: $LoginPageRouteExtension._fromState,
     );
 
-extension $LoginPageRouterExtension on LoginPageRouter {
-  static LoginPageRouter _fromState(GoRouterState state) => LoginPageRouter();
+extension $LoginPageRouteExtension on LoginPageRoute {
+  static LoginPageRoute _fromState(GoRouterState state) => LoginPageRoute();
 
   String get location => GoRouteData.$location(
         '/login',
@@ -33,13 +33,13 @@ extension $LoginPageRouterExtension on LoginPageRouter {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $signupPageRouter => GoRouteData.$route(
+RouteBase get $signupPageRoute => GoRouteData.$route(
       path: '/signup',
-      factory: $SignupPageRouterExtension._fromState,
+      factory: $SignupPageRouteExtension._fromState,
     );
 
-extension $SignupPageRouterExtension on SignupPageRouter {
-  static SignupPageRouter _fromState(GoRouterState state) => SignupPageRouter();
+extension $SignupPageRouteExtension on SignupPageRoute {
+  static SignupPageRoute _fromState(GoRouterState state) => SignupPageRoute();
 
   String get location => GoRouteData.$location(
         '/signup',

@@ -9,11 +9,11 @@ import 'package:todo_frontend/feature/user/presentation/page/signup_page/signup_
 
 part 'user_router.g.dart';
 
-@TypedGoRoute<LoginPageRouter>(
-  path: LoginPageRouter.path,
+@TypedGoRoute<LoginPageRoute>(
+  path: LoginPageRoute.path,
 )
 @immutable
-class LoginPageRouter extends UnAuthRoute {
+class LoginPageRoute extends UnAuthRoute {
   static const String path = '/login';
 
   @override
@@ -25,10 +25,10 @@ class LoginPageRouter extends UnAuthRoute {
   }
 }
 
-@TypedGoRoute<SignupPageRouter>(
-  path: SignupPageRouter.path,
+@TypedGoRoute<SignupPageRoute>(
+  path: SignupPageRoute.path,
 )
-class SignupPageRouter extends UnAuthRoute {
+class SignupPageRoute extends UnAuthRoute {
   static const String path = '/signup';
 
   @override

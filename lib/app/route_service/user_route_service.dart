@@ -12,16 +12,16 @@ class UserRouteService extends IUserRouteService {
 
   @override
   void goToHome({BuildContext? context}) {
-    HomePageRouter().go(context ?? _contextTracker.context);
+    HomePageRoute().go(context ?? _contextTracker.context);
   }
 
   @override
   void goToSignup({BuildContext? context}) {
-    SignupPageRouter().go(context ?? _contextTracker.context);
+    SignupPageRoute().go(context ?? _contextTracker.context);
   }
 
   @override
   void goToLogin({BuildContext? context}) {
-    LoginPageRouter().go(context ?? _contextTracker.context);
+    LoginPageRoute().go(context ?? _contextTracker.context);
   }
 }

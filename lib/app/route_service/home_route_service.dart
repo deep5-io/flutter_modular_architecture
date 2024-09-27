@@ -14,12 +14,12 @@ class HomeRouteService extends IHomeRouteService {
 
   @override
   void goToLogin({BuildContext? context}) {
-    LoginPageRouter().go(context ?? _contextTracker.context);
+    LoginPageRoute().go(context ?? _contextTracker.context);
   }
 
   @override
   void goAddNewTodo({BuildContext? context}) {
-    const AddNewTodoPageRouter().go(context ?? _contextTracker.context);
+    const AddNewTodoPageRoute().go(context ?? _contextTracker.context);
   }
 
   @override
@@ -32,6 +32,6 @@ class HomeRouteService extends IHomeRouteService {
 
   @override
   void goEditTodo({required Todo todo, BuildContext? context}) {
-    AddNewTodoPageRouter($extra: todo).go(context ?? _contextTracker.context);
+    AddNewTodoPageRoute($extra: todo).go(context ?? _contextTracker.context);
   }
 }
